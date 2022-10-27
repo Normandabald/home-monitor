@@ -28,4 +28,3 @@ if __name__ == '__main__':
     while True:
 	    testSpeed()
 	    time.sleep(60)
-

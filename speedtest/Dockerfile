@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --update --no-cache py-pip curl bash
+RUN apk add --update --no-cache py-pip
 RUN pip install --upgrade pip
 RUN pip install speedtest-cli --upgrade
 RUN pip install prometheus-client --upgrade
