@@ -1,4 +1,6 @@
 ---
-- hosts: all
-
-- include: install-docker.yaml
+- name: Main
+  hosts: all
+  tasks:
+    - include: install-docker.yaml
+    - include: install-monitor-suite.yaml

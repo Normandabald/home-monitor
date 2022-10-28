@@ -1,29 +1,27 @@
-become: yes
-tasks:
+---
+  - name: ensure prometheus config directory exists
+    file:
+      path: /etc/prometheus
+      state: directory
 
-- name: ensure prometheus config director exists
-  file:
-    path: /etc/prometheus
-    state: directory
+  - name: install prometheus config file
+    copy:
+      src: ../prometheus.yml
+      dest: /etc/prometheus
+      mode: '0644'
 
-- name: install prometheus config file
-  copy:
-    src: ../prometheus.yml
-    dest: /etc/prometheus
-    mode: '0644'
+  - name: ensure home-monitor directory exists
+    file:
+      path: /opt/home-monitor
+      state: directory
 
-- name: ensure home-monitor directory exists
-  file:
-    path: /opt/home-monitor
-    state: directory
+  - name: clone monitoring repo
+    git:
+      repo: 'https://github.com/Normandabald/home-monitor.git'
+      dest: /opt/home-monitor
 
-- name: clone monitoring repo
-  git:
-    repo: 'https://github.com/Normandabald/home-monitor.git'
-    dest: /opt/home-monitor
-
-- name: start monitoring suite
-  become: True
-  shell:
-    cmd: "docker-compose -f docker-compose.yml up -d"
-    chdir: /opt/home-monitor/
+  - name: start monitoring suite docker containers
+    become: true
+    shell:
+      cmd: "docker-compose -f docker-compose.yml up -d"
+      chdir: /opt/home-monitor/
