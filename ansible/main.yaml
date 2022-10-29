@@ -4,3 +4,4 @@
   tasks:
     - include: install-docker.yaml
     - include: install-monitor-suite.yaml
+    - include: install-node-exporter.yaml

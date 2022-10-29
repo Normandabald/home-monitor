@@ -23,5 +23,5 @@
   - name: start monitoring suite docker containers
     become: true
     shell:
-      cmd: "docker-compose -f docker-compose.yml up -d"
+      cmd: "sudo docker-compose -f /opt/home-monitor/docker-compose.yml up -d"
       chdir: /opt/home-monitor/
