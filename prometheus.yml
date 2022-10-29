@@ -21,6 +21,11 @@ scrape_configs:
     static_configs:
       - targets: ['speedtest:8000']
 
+  - job_name: 'caliburn'
+    scrape_interval: 60s
+    static_configs:
+      - targets: ['192.168.0.2:9182']
+
   # Example job for node_exporter
   # - job_name: 'node_exporter'
   #   static_configs:
