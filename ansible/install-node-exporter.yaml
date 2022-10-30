@@ -1,18 +1,31 @@
 ---
-  - name: download node exporter
+  - name: Determine architecture
+    debug:
+      set_fact:
+      architecture: "arm"
+      when: ansible_architecture != "x86_64"
+
+  - name: download node exporter for x86_64 architecture
     get_url:
       url: https://github.com/prometheus/node_exporter/releases/download/v1.4.0/node_exporter-1.4.0.linux-amd64.tar.gz
       dest: /tmp
+      when: architecture == "x86_64"
+
+  - name: download node exporter for arm architecture
+    get_url:
+      url: https://github.com/prometheus/node_exporter/releases/download/v1.4.0/node_exporter-1.4.0.linux-arm64.tar.gz
+      dest: /tmp
+      when: architecture == "arm"
 
   - name: unarchive node exporter
     unarchive:
       remote_src: yes
-      src: /tmp/node_exporter-1.4.0.linux-amd64.tar.gz
-      dest: /tmp
+      src: /tmp/node_exporter-1.4.0.linux-*.tar.gz
+      dest: /tmp/node_exporter
 
   - name: move node exporter to /usr/local/bin
     copy:
-      src: /tmp/node_exporter-1.4.0.linux-amd64/node_exporter
+      src: /tmp/node_exporter/node_exporter
       dest: /usr/local/bin/node_exporter
       remote_src: yes
       owner: root
@@ -33,3 +46,9 @@
       enabled: yes
       state: started
       name: node_exporter.service
+  
+  - name: cleanup install files
+    file:
+      become: true
+      path: /tmp/node_exporter
+      recurse: yes
