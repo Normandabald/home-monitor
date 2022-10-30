@@ -20,8 +20,8 @@ services:
     container_name: prometheus
     restart: unless-stopped
     image: prom/prometheus:latest
-    expose:
-      - "9090"
+    ports:
+      - "9090:9090"
     volumes:
       - /etc/prometheus:/etc/prometheus
       - prometheus-data:/prometheus
@@ -43,3 +43,10 @@ services:
     image: normandabald/speedtest:latest
     expose:
       - "8000"
+
+  riverlevels:
+    container_name: riverleves
+    restart: unless-stopped
+    image: normandabald/riverlevels:latest
+    expose:
+      - "8001"

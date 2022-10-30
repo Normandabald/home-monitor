@@ -21,6 +21,11 @@ scrape_configs:
     static_configs:
       - targets: ['speedtest:8000']
 
+  - job_name: 'riverlevels'
+    scrape_interval: 60s
+    static_configs:
+      - targets: ['riverlevels:8001']
+
   - job_name: 'caliburn'
     scrape_interval: 5s
     static_configs:
@@ -30,13 +35,3 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['192.168.0.113:9100']
-
-  # Example job for node_exporter
-  # - job_name: 'node_exporter'
-  #   static_configs:
-  #     - targets: ['node_exporter:9100']
-
-  # Example job for cadvisor
-  # - job_name: 'cadvisor'
-  #   static_configs:
-  #     - targets: ['cadvisor:8080']
