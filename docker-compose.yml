@@ -45,8 +45,10 @@ services:
       - "8000"
 
   riverlevels:
-    container_name: riverleves
+    container_name: riverlevels
     restart: unless-stopped
     image: normandabald/riverlevels:latest
     expose:
-      - "8001"
+      - "8000"
+    environment:
+      - RIVER_STATION_ID=${RIVER_STATION_ID}

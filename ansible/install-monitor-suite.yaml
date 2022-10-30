@@ -19,9 +19,9 @@
     git:
       repo: 'https://github.com/Normandabald/home-monitor.git'
       dest: /opt/home-monitor
-
-  - name: start monitoring suite docker containers
-    become: true
-    shell:
-      cmd: "sudo docker-compose -f /opt/home-monitor/docker-compose.yml up -d"
-      chdir: /opt/home-monitor/
+  # Needs further testing
+  # - name: start monitoring suite docker containers
+  #   become: true
+  #   shell:
+  #     cmd: "sudo docker-compose -f /opt/home-monitor/docker-compose.yml up -d"
+  #     chdir: /opt/home-monitor/
