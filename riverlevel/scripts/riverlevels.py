@@ -3,13 +3,15 @@ import requests
 import time
 import datetime
 from prometheus_client import start_http_server, Gauge
+from dotenv import load_dotenv
+load_dotenv()
 
 print("Starting container...")
 water_level = Gauge('water_level', 'Water level of river')
 water_level_timestamp = Gauge('water_level_timestamp', 'Time when last reading was taken')
 station_id = os.getenv('RIVER_STATION_ID')
 # station_id = "E2814"
-print("Starting to monitor river levels for station: "+str(station_id))
+print("Starting to monitor river levels for station: "+str('STATION_ID'))
 def check_riverlevels():
     try:
         response = requests.get("https://environment.data.gov.uk/flood-monitoring/id/measures/"+str(station_id)+"-level-stage-i-15_min-mASD")

@@ -11,7 +11,7 @@ Current implementation doesn't use SSL but could easily be added.
 
 All of this is deployed to a host via ansible, in theory you should be able to clone the repo, set required variables and deploy to wherever you want within a few seconds.
 
-
+![Example Dashboard](/dcos/images/example_dashboard.png?raw=true "Example Dashboard")
 ## What is Monitored?
 
 - Network Quality:
@@ -41,7 +41,7 @@ All of this is deployed to a host via ansible, in theory you should be able to c
 NOTE: I haven't tested this outside of my own environment yet so there may be oddities that crop up.
 
 This project is deployed using Ansible and assumes you are already familiar with setting this up.
-Ensure your remote target IP has been added to your `/etc/ansible/hosts` file:
+Ensure your remote target IP has been added to your `/etc/ansible/hosts` file and that you have SSH access to this node:
 
 ```bash
 sudo ansible-playbook -u <username> --private-key /path/to/id_rsa --become home-monitor/ansible/main.yaml
