@@ -11,7 +11,12 @@ Current implementation doesn't use SSL but could easily be added.
 
 All of this is deployed to a host via ansible, in theory you should be able to clone the repo, set required variables and deploy to wherever you want within a few seconds.
 
-![Example Dashboard](/dcos/images/example_dashboard.png?raw=true "Example Dashboard")
+<img
+  src="/dcos/images/example_dashboard.png"
+  alt="Example Grafana Dashboard"
+  title="Grafana Dashbaord"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+
 ## What is Monitored?
 
 - Network Quality:
