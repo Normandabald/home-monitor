@@ -1,4 +1,5 @@
 ---
+# This play installs the node exporter onto the remote host
   - name: Determine architecture
     debug:
       set_fact:

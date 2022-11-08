@@ -35,3 +35,14 @@ All of this is deployed to a host via ansible, in theory you should be able to c
 - Local Weather
 - Local Air Quality
 - Home Energy Usage
+
+## Getting Started
+
+NOTE: I haven't tested this outside of my own environment yet so there may be oddities that crop up.
+
+This project is deployed using Ansible and assumes you are already familiar with setting this up.
+Ensure your remote target IP has been added to your `/etc/ansible/hosts` file:
+
+```bash
+sudo ansible-playbook -u <username> --private-key /path/to/id_rsa --become home-monitor/ansible/main.yaml
+```
