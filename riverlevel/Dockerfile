@@ -5,7 +5,6 @@ RUN pip install --upgrade pip
 RUN pip install prometheus-client --upgrade
 RUN pip install requests
 RUN pip install datetime
-ENV RIVER_STATION_ID=$RIVER_STATION_ID
 
 ADD scripts/ /app/riverlevels/
 

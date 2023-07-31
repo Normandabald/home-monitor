@@ -4,7 +4,6 @@ RUN apk add --update --no-cache py-pip
 RUN pip install --upgrade pip
 RUN pip install speedtest-cli --upgrade
 RUN pip install prometheus-client --upgrade
-ENV STATION_ID=$STATION_ID
 
 ADD scripts/ /app/speedtest/
 
