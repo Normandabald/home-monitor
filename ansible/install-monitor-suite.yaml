@@ -1,28 +1,28 @@
 ---
 # This play adds the repository to the remote host along with required config files
-  - name: ensure prometheus config directory exists
-    file:
-      path: /etc/prometheus
-      state: directory
+- name: ensure prometheus config directory exists
+  file:
+    path: /etc/prometheus
+    state: directory
 
-  - name: copy prometheus config file to remote
-    copy:
-      src: ../prometheus.yml
-      dest: /etc/prometheus
-      mode: '0644'
+- name: copy prometheus config file to remote
+  copy:
+    src: ../prometheus.yml
+    dest: /etc/prometheus
+    mode: "0644"
 
-  - name: ensure home-monitor directory exists
-    file:
-      path: /opt/home-monitor
-      state: directory
+- name: ensure home-monitor directory exists
+  file:
+    path: /opt/home-monitor
+    state: directory
 
-  - name: clone monitoring repo
-    git:
-      repo: 'https://github.com/Normandabald/home-monitor.git'
-      dest: /opt/home-monitor
+- name: clone monitoring repo
+  git:
+    repo: "https://github.com/Normandabald/home-monitor.git"
+    dest: /opt/home-monitor
 
-  # Needs further testing
-  # - name: start monitoring suite docker containers
-  #   become: true
-  #   shell:
-  #     cmd: "docker-compose -f /opt/home-monitor/docker-compose.yml up -d"
+# Needs further testing
+- name: start monitoring suite docker containers
+  become: true
+  shell:
+    cmd: "docker-compose -f /opt/home-monitor/docker-compose.yml up -d"
